@@ -15,9 +15,10 @@ typedef struct {
 	enum suit suit;
 	int num;
 	bool is_visible;
+	int stack_index;
 } card;
 
 void cards_init(void);
-void card_draw(card c, int i);
+void card_draw(card c, int card_index, int stack_index);
 
 #endif /* CARD_H */

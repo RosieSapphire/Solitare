@@ -6,11 +6,15 @@ int main(void)
 	window_init();
 
 	cards_init();
-	card_stack stack_test = card_stack_create(5);
+	card_stack stacks[7];
+	for(int i = 0; i < 7; i++)
+		stacks[i] = card_stack_create(i + 1, i);
 
 	while(window_is_running()) {
 		window_clear((rgba_t){0, 0, 0, 1});
-		card_stack_draw(stack_test);
+		for(int i = 0; i < 7; i++)
+			card_stack_draw(stacks[i]);
+
 		window_display();
 	}
 

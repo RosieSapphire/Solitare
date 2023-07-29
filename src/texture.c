@@ -26,7 +26,11 @@ GLuint texture_load(const char *path)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
+	
+	const int formats[5] = {GL_NONE, GL_RED, GL_RG, GL_RGB, GL_RGBA};
+	const int format = formats[comp];
+
+	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format,
 			GL_UNSIGNED_BYTE, data);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	stbi_image_free(data);
